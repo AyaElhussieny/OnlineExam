@@ -7,6 +7,7 @@ import { AuthEndPoint } from './enums/AuthAPI.endpoint';
 import { Login } from './interfaces/login';
 import { LoginRes } from './interfaces/LoginRes';
 import { LoginApiRes } from './interfaces/loginApiRes';
+import { Register } from './interfaces/register';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,19 @@ export class AuthApiService implements AuthAPI{
    // catchError(err => of([]))  //return observable
   )
 }
- register(data: any): Observable<any> {
+ register(data: Register): Observable<LoginApiRes | any> {
   return this._httpClient.post(AuthEndPoint.SignUp,data)
   }
+
+ changePassword(data: any): Observable<any> {
+return this._httpClient.post(AuthEndPoint.ChangePassword,data)
+}
+ editProfile(data : any): Observable<any> {
+return this._httpClient.put(AuthEndPoint.EditProfile,data)
+  }
+
+  forgetPassword(email : string) :Observable<any>{
+    return this._httpClient.post(AuthEndPoint.ForgotPassword,email)
+  }
+
 }

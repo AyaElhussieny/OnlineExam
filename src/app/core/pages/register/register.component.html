@@ -4,38 +4,38 @@
      
       <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
         <p-floatLabel>
-            <input pInputText id="username" formControlName="email" />
+            <input pInputText id="username" formControlName="username" />
             <label for="username">User Name</label>
         </p-floatLabel>
 
         <p-floatLabel>
-            <input pInputText id="username" formControlName="email" />
-            <label for="username">First Name</label>
+            <input pInputText id="firstName" formControlName="firstName" />
+            <label for="firstName">First Name</label>
         </p-floatLabel>
 
         <p-floatLabel>
-            <input pInputText id="username" formControlName="email" />
-            <label for="username">Last Name</label>
+            <input pInputText id="lastName" formControlName="lastName" />
+            <label for="lastName">Last Name</label>
         </p-floatLabel>
 
         <p-floatLabel>
-            <input pInputText id="username" formControlName="email" />
-            <label for="username">E-mail</label>
+            <input pInputText id="email" formControlName="email" />
+            <label for="email">E-mail</label>
         </p-floatLabel>
 
         <p-floatLabel>
-            <input pInputText id="username" formControlName="email" />
-            <label for="username">Phone</label>
+            <input pInputText id="phone" formControlName="phone" />
+            <label for="phone">Phone</label>
         </p-floatLabel>
 
         <p-floatLabel>
-        <p-password formControlName="password" [toggleMask]="true" />
-        <label for="username">Password</label>
+        <p-password formControlName="password" id="password" [toggleMask]="true" />
+        <label for="password">Password</label>
         </p-floatLabel>
 
         <p-floatLabel>
-            <p-password formControlName="password" [toggleMask]="true" />
-            <label for="username">Confirm Password</label>
+            <p-password formControlName="rePassword" [toggleMask]="true" />
+            <label for="rePassword">Confirm Password</label>
             </p-floatLabel>
 
         @if (errorMsg) {

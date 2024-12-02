@@ -31,13 +31,13 @@ export class RegisterComponent {
 
 
   registerForm : FormGroup = new FormGroup ({
-    username : new FormControl ('',[Validators.required ]),
+    username : new FormControl ('',[Validators.required , Validators.minLength(4),Validators.maxLength(25)]),
     firstName : new FormControl ('',[Validators.required ]),
     lastName : new FormControl ('',[Validators.required ]),
     email : new FormControl ('',[Validators.required , Validators.email]),
-    phone : new FormControl ('',[Validators.required ]),
-    password : new FormControl ('',[Validators.required]),
-    rePassword : new FormControl ('',[Validators.required])
+    phone : new FormControl ('',[Validators.required,Validators.minLength(11),Validators.maxLength(13) ]),
+    password : new FormControl ('',[Validators.required ,Validators.minLength(6)]),
+    rePassword : new FormControl ('',[Validators.required ,Validators.minLength(6)])
   },{
     validators : this.validateRePassword
   });
@@ -61,15 +61,16 @@ export class RegisterComponent {
   }
 
   register(form : FormGroup){
+    console.log(form.value)
     if(form.valid){
-      this._authApiService.login(form.value).subscribe({
+      this._authApiService.register(form.value).subscribe({
         next:(res:any)=>{
           console.log("res",res);
           this._route.navigate(['/'])
         },
         error:(err:any)=>{
           console.log("err",err)
-          this.errorMsg= 'email or password is not valid !';
+          this.errorMsg= err.error.message;
           console.log("errorMsg",this.errorMsg)
 
         }

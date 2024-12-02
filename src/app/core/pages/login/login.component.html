@@ -16,7 +16,7 @@
         @if (errorMsg) {
             <p class="text-danger">{{errorMsg}}</p>
      }
-        <a href="" class="primary d-flex justify-content-end mb-5">Recover Password ?</a>
+        <a [routerLink]="['/forget-password']" class="primary d-flex justify-content-end mb-5">Recover Password ?</a>
 
         <app-main-button  [active]="active" (action)="login(loginForm)" > </app-main-button>
 

@@ -15,6 +15,11 @@ export const routes: Routes = [
                 path:'sign-up',
                 loadComponent :()=> import ('./core/pages/register/register.component').then( c => c.RegisterComponent),
                 title : 'Register'
+            },
+            {
+                path:'forget-password',
+                loadComponent : ()=> import('./core/pages/forget-password/forget-password.component').then( c => c.ForgetPasswordComponent),
+                title : 'Forget Password'
             }
         ]
     }
