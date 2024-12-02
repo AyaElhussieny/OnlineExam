@@ -47,9 +47,7 @@ export class OTPComponent {
       this._authApiService.vrifyResetCode(form.value).subscribe({
         next:(res:any)=>{
           console.log("res",res);
-          
-          this._route.navigate(['/reset-password'])
-          
+          this._route.navigate(['/reset-password'])  
         },
         error:(err:any)=>{
           console.log("err",err)
