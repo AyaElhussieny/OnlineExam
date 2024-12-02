@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { MainButtonComponent } from '../../UI/main-button/main-button.component';
 import { AuthApiService } from 'auth-api';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterLink,
     InputTextModule,
     FloatLabelModule,
     PasswordModule,
@@ -26,7 +27,7 @@ import { Router } from '@angular/router';
 export class ForgetPasswordComponent {
 
 
-  active : string = 'Sign in';
+  active !: string;
   errorMsg !: string ;
 
   forgetPasswordForm : FormGroup = new FormGroup ({
@@ -37,6 +38,7 @@ export class ForgetPasswordComponent {
     @Inject(PLATFORM_ID) private platformID: any
 
   ){
+    this.active =  'Forgot Password';
   }
 
 
@@ -46,9 +48,8 @@ export class ForgetPasswordComponent {
         next:(res:any)=>{
           console.log("res",res);
           if (isPlatformBrowser(this.platformID)) {
-            localStorage.setItem('token',res.token);
-            localStorage.setItem('userData',res.userData);
-          this._route.navigate(['/'])
+          localStorage.setItem('email',form.value);
+            this._route.navigate(['/reset-code'])
           }
         },
         error:(err:any)=>{

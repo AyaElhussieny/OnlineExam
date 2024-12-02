@@ -20,6 +20,16 @@ export const routes: Routes = [
                 path:'forget-password',
                 loadComponent : ()=> import('./core/pages/forget-password/forget-password.component').then( c => c.ForgetPasswordComponent),
                 title : 'Forget Password'
+            },
+            {
+                path :'reset-code',
+                loadComponent : ()=> import('./core/pages/otp/otp.component').then( c => c.OTPComponent),
+                title :'Reset Code'
+            },
+            {
+                path :'reset-password',
+                loadComponent : ()=> import('./core/pages/reset-password/reset-password.component').then( c => c.ResetPasswordComponent),
+                title :'Reset Password'
             }
         ]
     }

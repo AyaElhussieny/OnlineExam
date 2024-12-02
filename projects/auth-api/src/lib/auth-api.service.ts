@@ -38,4 +38,10 @@ return this._httpClient.put(AuthEndPoint.EditProfile,data)
     return this._httpClient.post(AuthEndPoint.ForgotPassword,email)
   }
 
+  vrifyResetCode(code : string) :Observable<any>{
+    return this._httpClient.post(AuthEndPoint.VerifyResetCode,code)
+  } 
+  resetPassword(data : any) :Observable<any>{
+    return this._httpClient.post(AuthEndPoint.ResetPassword,data)
+  }
 }

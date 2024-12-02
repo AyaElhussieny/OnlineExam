@@ -1,0 +1,21 @@
+<div id="login" class="font-poppins py-5 px-2">
+    <div class="container p-lg-5">
+      <h5 class="title-bold mb-5">Reset Code</h5>
+     
+      <form [formGroup]="vrifyResetCodeForm" (ngSubmit)="vrifyResetCode(vrifyResetCodeForm)">
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="resetCode" />
+            <label for="username">Reset Code</label>
+        </p-floatLabel>
+        
+
+        @if (errorMsg) {
+            <p class="text-danger">{{errorMsg}}</p>
+     }
+        <a class=" d-flex justify-content-end mb-3">Didn’t receive a code? <span class="primary" [routerLink]="['forget-password']">Resend</span></a>
+
+        <app-main-button  [active]="active" (action)="vrifyResetCode(vrifyResetCodeForm)" > </app-main-button>
+
+      </form>
+    </div>
+</div>

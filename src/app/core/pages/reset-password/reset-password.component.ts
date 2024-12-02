@@ -1,50 +1,45 @@
-import { Component } from '@angular/core';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputTextModule } from 'primeng/inputtext';
+import { Router, RouterLink } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { MainButtonComponent } from '../../UI/main-button/main-button.component';
 import { AuthApiService } from 'auth-api';
-import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-reset-password',
   standalone: true,
   imports: [
-    CommonModule,
+     CommonModule,
     ReactiveFormsModule,
     FormsModule,
     InputTextModule,
     FloatLabelModule,
     PasswordModule,
-    MainButtonComponent,
-    RouterLink ,
-  ],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+    MainButtonComponent],
+  templateUrl: './reset-password.component.html',
+  styleUrl: './reset-password.component.css'
 })
-export class RegisterComponent {
+export class ResetPasswordComponent {
+
 
   active !: string ;
   errorMsg !: string ;
 
-
-  registerForm : FormGroup = new FormGroup ({
-    username : new FormControl ('',[Validators.required , Validators.minLength(4),Validators.maxLength(25)]),
-    firstName : new FormControl ('',[Validators.required ]),
-    lastName : new FormControl ('',[Validators.required ]),
+  resetPasswordForm : FormGroup = new FormGroup ({
     email : new FormControl ('',[Validators.required , Validators.email]),
-    phone : new FormControl ('',[Validators.required,Validators.minLength(11),Validators.maxLength(13) ]),
-    password : new FormControl ('',[Validators.required ,Validators.minLength(6)]),
-    rePassword : new FormControl ('',[Validators.required ,Validators.minLength(6)])
+    newPassword : new FormControl ('',[Validators.required])
   },{
-    validators : this.validateRePassword
+    // validators :this.validateRePassword
   });
   constructor(private _authApiService:AuthApiService ,
-    private _route:Router
+    private _route:Router,
+    @Inject(PLATFORM_ID) private platformID: any
+
   ){
-    this.active = 'Create Account';
+    this.active = 'Reset Password';
   }
 
   validateRePassword(registerForm : any) : any{
@@ -61,17 +56,22 @@ export class RegisterComponent {
     }
   }
 
-  register(form : FormGroup){
-    console.log(form.value)
+  resetPassword(form : FormGroup){
     if(form.valid){
-      this._authApiService.register(form.value).subscribe({
+      
+      if (isPlatformBrowser(this.platformID)) {
+        let email = localStorage.getItem('email');
+        form.get('email')?.patchValue(email);
+        }
+      this._authApiService.resetPassword(form.value).subscribe({
         next:(res:any)=>{
           console.log("res",res);
           this._route.navigate(['/'])
+
         },
         error:(err:any)=>{
           console.log("err",err)
-          this.errorMsg= err.error.message;
+          this.errorMsg= 'email or password is not valid !';
           console.log("errorMsg",this.errorMsg)
 
         }
@@ -79,6 +79,5 @@ export class RegisterComponent {
     }
 
   }
-
 
 }
