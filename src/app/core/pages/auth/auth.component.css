@@ -1,0 +1,10 @@
+.row{
+    height: min-content;
+}
+
+.auth-left{
+    border-top-right-radius: 5rem;
+    border-bottom-right-radius: 5rem;
+    height: max-content;
+}
+

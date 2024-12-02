@@ -1,0 +1,50 @@
+<div id="login" class="font-poppins py-3 px-2">
+    <div class="container px-lg-5 py-lg-2">
+      <h5 class="title-bold mb-4">Sign in</h5>
+     
+      <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="email" />
+            <label for="username">User Name</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="email" />
+            <label for="username">First Name</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="email" />
+            <label for="username">Last Name</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="email" />
+            <label for="username">E-mail</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="email" />
+            <label for="username">Phone</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+        <p-password formControlName="password" [toggleMask]="true" />
+        <label for="username">Password</label>
+        </p-floatLabel>
+
+        <p-floatLabel>
+            <p-password formControlName="password" [toggleMask]="true" />
+            <label for="username">Confirm Password</label>
+            </p-floatLabel>
+
+        @if (errorMsg) {
+            <p class="text-danger">{{errorMsg}}</p>
+     }
+     <p class="text-center mb-3">Already have an account? <a [routerLink]="['/']" class="primary">Login</a></p>
+
+        <app-main-button  [active]="active" (action)="register(registerForm)" > </app-main-button>
+
+      </form>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+:host ::ng-deep
+.p-menubar {
+    border: none;
+    background-color: var(--white-color);
+    display: flex;
+    justify-content: space-around;
+}
+
+::ng-deep
+a{
+    text-decoration: none;
+}

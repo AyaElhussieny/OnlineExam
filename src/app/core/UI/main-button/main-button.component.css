@@ -1,0 +1,13 @@
+button:hover{
+background-color: var(--white-color);
+color: var(--primary-color);
+border: 2px solid var(--primary-color);
+}
+
+button{
+    border-radius: 3rem;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: 2px solid var(--primary-color);
+
+}

@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div id="login" class="font-poppins py-5 px-2">
+    <div class="container p-lg-5">
+      <h5 class="title-bold mb-5">Sign in</h5>
+     
+      <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+        <p-floatLabel>
+            <input pInputText id="username" formControlName="email" />
+            <label for="username">E-mail</label>
+        </p-floatLabel>
+        
+        <p-floatLabel>
+        <p-password formControlName="password" [toggleMask]="true" />
+        <label for="username">Password</label>
+        </p-floatLabel>
+
+        @if (errorMsg) {
+            <p class="text-danger">{{errorMsg}}</p>
+     }
+        <a href="" class="primary d-flex justify-content-end mb-5">Recover Password ?</a>
+
+        <app-main-button  [active]="active" (action)="login(loginForm)" > </app-main-button>
+
+      </form>
+    </div>
+</div>

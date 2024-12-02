@@ -19,7 +19,7 @@ export class AuthApiService implements AuthAPI{
 
   return this._httpClient.post(AuthEndPoint.SignIn,data).pipe(
     map((res : any) => this._authApiAdapter.adapt(res)),
-    catchError(err => of([]))  //return observable
+   // catchError(err => of([]))  //return observable
   )
 }
  register(data: any): Observable<any> {
