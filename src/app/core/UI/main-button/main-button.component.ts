@@ -17,8 +17,8 @@ export class MainButtonComponent {
   constructor(){}
 
 
-  actionEmit(value? : any){
-    this.action.emit(value);
+  actionEmit(){
+    this.action.emit();
   }
 
 

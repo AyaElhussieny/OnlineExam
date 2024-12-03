@@ -30,9 +30,7 @@ export class ResetPasswordComponent {
 
   resetPasswordForm : FormGroup = new FormGroup ({
     email : new FormControl ('',[Validators.required , Validators.email]),
-    newPassword : new FormControl ('',[Validators.required])
-  },{
-    // validators :this.validateRePassword
+    newPassword : new FormControl ('',[Validators.required]),
   });
   constructor(private _authApiService:AuthApiService ,
     private _route:Router,
@@ -42,27 +40,18 @@ export class ResetPasswordComponent {
     this.active = 'Reset Password';
   }
 
-  validateRePassword(registerForm : any) : any{
-
-    let passwordControl = registerForm.get("password").value;
-    let rePasswordControl = registerForm.get("rePassword").value;
   
-    if(passwordControl == rePasswordControl){
-      return null;
-    }else{
-      rePasswordControl.setErrors({rePasswordNotMatch :"Password and Repassword should be matched"});
-  
-      return {rePasswordNotMatch :"Password and Repassword should be matched"};
-    }
-  }
 
   resetPassword(form : FormGroup){
+    if (isPlatformBrowser(this.platformID)) {
+      let email = localStorage.getItem('email');
+      form.get('email')?.patchValue(email);
+      }
+
+    console.log(form.value)
+
     if(form.valid){
-      
-      if (isPlatformBrowser(this.platformID)) {
-        let email = localStorage.getItem('email');
-        form.get('email')?.patchValue(email);
-        }
+
       this._authApiService.resetPassword(form.value).subscribe({
         next:(res:any)=>{
           console.log("res",res);
@@ -71,7 +60,7 @@ export class ResetPasswordComponent {
         },
         error:(err:any)=>{
           console.log("err",err)
-          this.errorMsg= 'email or password is not valid !';
+          this.errorMsg= err.error.message;
           console.log("errorMsg",this.errorMsg)
 
         }

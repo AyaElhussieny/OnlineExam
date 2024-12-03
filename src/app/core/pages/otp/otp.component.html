@@ -12,7 +12,7 @@
         @if (errorMsg) {
             <p class="text-danger">{{errorMsg}}</p>
      }
-        <p class=" d-flex justify-content-end mb-3">Didn’t receive a code? <a class="primary" [routerLink]="['forget-password']"> Resend</a></p>
+        <p class=" d-flex justify-content-end mb-3">Didn’t receive a code? <a class="primary" [routerLink]="['/forget-password']"> Resend</a></p>
 
         <app-main-button  [active]="active" (action)="vrifyResetCode(vrifyResetCodeForm)" > </app-main-button>
 

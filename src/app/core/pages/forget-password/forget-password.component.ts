@@ -48,7 +48,7 @@ export class ForgetPasswordComponent {
         next:(res:any)=>{
           console.log("res",res);
           if (isPlatformBrowser(this.platformID)) {
-          localStorage.setItem('email',form.value);
+          localStorage.setItem('email',form.get('email')?.value);
             this._route.navigate(['/reset-code'])
           }
         },

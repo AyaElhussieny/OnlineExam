@@ -31,7 +31,7 @@ export class OTPComponent {
   errorMsg !: string ;
 
   vrifyResetCodeForm : FormGroup = new FormGroup ({
-    email : new FormControl ('',[Validators.required , Validators.email]),
+    resetCode : new FormControl ('',[Validators.required ]),
   });
   constructor(private _authApiService:AuthApiService ,
     private _route:Router,
@@ -43,6 +43,7 @@ export class OTPComponent {
 
 
   vrifyResetCode(form : FormGroup){
+    console.log(form.value);
     if(form.valid){
       this._authApiService.vrifyResetCode(form.value).subscribe({
         next:(res:any)=>{
@@ -51,7 +52,7 @@ export class OTPComponent {
         },
         error:(err:any)=>{
           console.log("err",err)
-          this.errorMsg= 'email is not valid !';
+          this.errorMsg= err.error.message;
           console.log("errorMsg",this.errorMsg)
 
         }
