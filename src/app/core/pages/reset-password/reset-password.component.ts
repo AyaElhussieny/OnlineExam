@@ -40,8 +40,6 @@ export class ResetPasswordComponent {
     this.active = 'Reset Password';
   }
 
-  
-
   resetPassword(form : FormGroup){
     if (isPlatformBrowser(this.platformID)) {
       let email = localStorage.getItem('email');
