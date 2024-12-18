@@ -1,21 +1,35 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { AuthAPI } from './base/AuthAPI';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthApiAdapter } from './adapter/auth-login.adapter';
 import { AuthEndPoint } from './enums/AuthAPI.endpoint';
 import { Login } from './interfaces/login';
-import { LoginRes } from './interfaces/LoginRes';
+import { LoginRes } from './interfaces/loginRes';
 import { LoginApiRes } from './interfaces/loginApiRes';
 import { Register } from './interfaces/register';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthApiService implements AuthAPI{
 
+  token !: any;
+  constructor( private _httpClient:HttpClient ,
+     private _authApiAdapter:AuthApiAdapter,
+    @Inject(PLATFORM_ID) private platformID: any
+    ) { }
 
-  constructor( private _httpClient:HttpClient , private _authApiAdapter:AuthApiAdapter) { }
+  getToken() : string{
+   if (isPlatformBrowser(this.platformID)) 
+    this.token = localStorage.getItem('token');
+  console.log(this.token)
+
+    return this.token;
+  }
+
+  
  login(data: Login): Observable<LoginRes | any> {
 
   return this._httpClient.post(AuthEndPoint.SignIn,data).pipe(

@@ -30,7 +30,14 @@ export const routes: Routes = [
                 path :'reset-password',
                 loadComponent : ()=> import('./core/pages/reset-password/reset-password.component').then( c => c.ResetPasswordComponent),
                 title :'Reset Password'
+
             }
-        ]
+        ]     
     }
+    ,
+            {
+                path:'home',
+                loadComponent :()=> import('./feature/pages/home/home.component').then( c => c.HomeComponent),
+                title : 'Home'
+            }
 ];

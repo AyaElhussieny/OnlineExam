@@ -1,0 +1,27 @@
+:host ::ng-deep 
+.p-button {
+    display: none;
+}
+/* 
+::ng-deep 
+.p-button-label {
+    display: none;
+} */
+::ng-deep
+a {
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 1000px) {
+    :host ::ng-deep
+    .p-button {
+        display: block;
+        margin-bottom: 3rem;
+    }
+    
+    ::ng-deep
+    .p-menu {
+        display: none;
+    }
+}

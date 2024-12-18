@@ -1,0 +1,25 @@
+<div id="home">
+    <div class="container-fluid py-lg-5 py-2">
+        <div class="row">
+            <div class="col-lg-2 ">
+                <!-- sidebar -->
+                 <app-side-bar/>
+            </div>
+            <div class="col-lg-10 col-md-12">
+                <div class="row ">
+                    <div class="col-lg-8 col-md-6 col-sm-6">
+                        <app-input-search/>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4" >
+                        <app-main-button [active]="active"/>
+                    </div>
+                    <div class="col-2">
+                        <app-profile-icon />
+                    </div>
+                </div>
+                <app-profile-card/>
+                <app-all-quizes />
+            </div>
+        </div>
+    </div>
+</div>

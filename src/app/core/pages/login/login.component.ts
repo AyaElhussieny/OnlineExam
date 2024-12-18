@@ -51,7 +51,7 @@ export class LoginComponent {
           if (isPlatformBrowser(this.platformID)) {
             localStorage.setItem('token',res.token);
             localStorage.setItem('userData',res.userData);
-          this._route.navigate(['/'])
+          this._route.navigate(['/home'])
           }
         },
         error:(err:any)=>{

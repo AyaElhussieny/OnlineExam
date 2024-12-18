@@ -1,0 +1,17 @@
+:host ::ng-deep
+.p-inputtext {
+    width: 100%;
+    padding: 0.5rem;
+}
+::ng-deep
+.p-inputtext:enabled:focus {
+    box-shadow: none;
+}
+::ng-deep
+.p-float-label {
+margin-bottom: 2rem;
+}
+::ng-deep
+.p-component , .p-component *{
+    width: 100%;
+}

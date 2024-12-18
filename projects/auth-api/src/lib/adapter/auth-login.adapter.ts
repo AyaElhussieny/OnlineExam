@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Adapter } from '../interfaces/adapter';
 import { LoginApiRes } from '../interfaces/loginApiRes';
-import { LoginRes } from '../interfaces/LoginRes';
+import { LoginRes } from '../interfaces/loginRes';
 
 @Injectable({
   providedIn: 'root'

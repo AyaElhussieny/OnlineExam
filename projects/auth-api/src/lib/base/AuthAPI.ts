@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
 import { Login } from "../interfaces/login";
-import { LoginRes } from "../interfaces/LoginRes";
+ import { LoginRes } from "../interfaces/loginRes";
 
 export abstract class AuthAPI {
         //list all in auth methods

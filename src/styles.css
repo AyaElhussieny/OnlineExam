@@ -11,6 +11,7 @@
     --light-color : #F0F4FC;
     --white-color : #ffffff;
     --primary-color : #4461F2;
+    --gray-color :#979CA3;
 }
 
 .title-bold {
@@ -33,6 +34,10 @@
   .primary{
 
     color: var(--primary-color);
+  }
+
+  .gray{
+    color: var(--gray-color);
   }
 
   .bg-primary{

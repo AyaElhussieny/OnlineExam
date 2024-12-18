@@ -1,0 +1,12 @@
+<div id="side-bar">
+    <div class="lg-veiw">
+        <p-menu [model]="items" />
+    </div>
+
+    <div class="md-veiw">
+        <p-button (onClick)="menu.toggle($event)" >
+        <span class="pi pi-align-justify"  pButtonLabel></span>
+        </p-button>
+        <p-tieredMenu #menu [model]="items" [popup]="true" />  
+    </div>
+</div>
