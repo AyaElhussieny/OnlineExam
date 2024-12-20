@@ -35,9 +35,19 @@ export const routes: Routes = [
         ]     
     }
     ,
+    {
+        path:'home',
+        loadComponent :()=> import('./feature/pages/home/home.component').then( c => c.HomeComponent),
+        children :[
             {
-                path:'home',
-                loadComponent :()=> import('./feature/pages/home/home.component').then( c => c.HomeComponent),
-                title : 'Home'
+                path : '',
+                loadComponent : ()=>import('./feature/UI/select-exam/select-exam.component').then( c => c.SelectExamComponent) ,
+                title : 'Select Subjects'
+            },
+            {
+                path : 'select-diploma/:quize_id',
+                loadComponent :()=> import('./feature/UI/select-diploma/select-diploma.component').then(c => c.SelectDiplomaComponent)
             }
+        ]
+    }
 ];

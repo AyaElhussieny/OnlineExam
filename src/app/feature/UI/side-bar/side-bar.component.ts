@@ -4,6 +4,10 @@ import { MenuItem } from 'primeng/api';
 import { TieredMenuModule } from 'primeng/tieredmenu';
 import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
+import { AvatarModule } from 'primeng/avatar';
+import { RippleModule } from 'primeng/ripple';
+
+
 
 
 
@@ -14,7 +18,9 @@ import { MenuModule } from 'primeng/menu';
     CommonModule ,
     TieredMenuModule ,
     ButtonModule ,
-    MenuModule
+    MenuModule ,
+    AvatarModule ,
+    RippleModule
   ],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
@@ -25,17 +31,21 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {
+        separator : true
+      },
+     
+      {
           label: 'Dashboard',
-          icon: 'pi pi-file',
+          icon: 'pi pi-microsoft',
        },
 
        {
-        label: 'Quizes',
-        icon: 'pi pi-file',
+        label: 'Quiz History',
+        icon: 'pi pi-address-book',
        },
        {
-        label: 'Logout',
-        icon: 'pi pi-file',
+        label: 'Log out',
+        icon: 'pi pi-arrow-left',
      },
 
       ]

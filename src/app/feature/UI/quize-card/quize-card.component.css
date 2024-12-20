@@ -1,0 +1,28 @@
+:host ::ng-deep
+.p-card .p-card-body{
+    padding: 0;
+    
+}
+
+::ng-deep
+.p-card{
+ overflow: hidden;
+ position: relative;
+ border: none;
+}
+
+::ng-deep
+.p-card .p-card-content{
+padding: 0;
+}
+.card{
+    position: absolute;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    bottom: 15%;
+    left: 10%;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+    width: 80%;
+}
+

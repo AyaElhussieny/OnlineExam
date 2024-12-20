@@ -1,1 +1,12 @@
-<p>quize-card works!</p>
+<div id="quize" class="font-poppins">
+    <p-card >
+          <a [routerLink]="['select-diploma', quize._id]" >
+            <img width="100%" alt="Card" [src]="quize.icon" />
+
+
+            <div class="card border-0 py-2 d-flex justify-content-center align-items-center text-white">
+                <h4  class="title-bold">{{quize.name}}</h4>
+            </div>
+          </a>
+    </p-card>
+</div>

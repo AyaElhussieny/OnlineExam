@@ -2,6 +2,8 @@
 .p-button {
     display: none;
 }
+
+
 /* 
 ::ng-deep 
 .p-button-label {
@@ -17,7 +19,13 @@ a {
     :host ::ng-deep
     .p-button {
         display: block;
-        margin-bottom: 3rem;
+        display: flex;
+        justify-content: start;
+
+    }
+    ::ng-deep 
+    .p-button span{
+        text-align: start;
     }
     
     ::ng-deep

@@ -1,0 +1,29 @@
+.md-search{
+    display: none;
+}
+
+@media screen and (max-width:1050px) {
+
+    .search{
+        display: none;
+    }
+
+    .md-search{
+        display: flex;
+        justify-content: space-between;
+        /* justify-content: end; */
+        align-content: end;
+        align-items: center;
+        position: absolute;
+        top: -5%;
+        right: 5%;
+        
+    }
+
+    .md-search-perant{
+        position: relative;
+        top: -5%;
+    }
+    
+    
+}

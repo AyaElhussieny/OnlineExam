@@ -5,8 +5,8 @@
                 <!-- sidebar -->
                  <app-side-bar/>
             </div>
-            <div class="col-lg-10 col-md-12">
-                <div class="row ">
+            <div class="col-lg-10 col-md-12 position-relative ">
+                <div class="search row ">
                     <div class="col-lg-8 col-md-6 col-sm-6">
                         <app-input-search/>
                     </div>
@@ -17,9 +17,17 @@
                         <app-profile-icon />
                     </div>
                 </div>
-                <app-profile-card/>
-                <app-all-quizes />
+                    <div class="md-search w-75 text-white ">
+                        <div>
+                            <i class="fa-solid fs-3 fa-magnifying-glass"></i>
+                        </div>
+    
+                        <app-profile-icon />
+                </div>
+                  <!-- router-outlet -->
+                   <router-outlet />
             </div>
+             
         </div>
     </div>
 </div>

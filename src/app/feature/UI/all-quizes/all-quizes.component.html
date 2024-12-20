@@ -3,4 +3,21 @@
         <p class="primary title-bold">Quizes</p>
         <P class="primary title-bold">View All</P>
     </div>
+
+
+    <p-scroller 
+    [items]="allQuizes" 
+    [itemSize]="size" 
+    scrollHeight="400px" 
+    styleClass="border-1 surface-border" 
+        [style]="{'width': '100%', 'height': '100%'}">
+        <ng-template pTemplate="item" let-item >
+            <div class="row mx-0 gy-3">
+                      <div class="col-md-4" *ngFor="let quize of allQuizes">
+                    <app-quize-card [quize]="quize" />
+                </div>
+            </div>
+            </ng-template>
+        </p-scroller>
+
 </div>
