@@ -18,6 +18,7 @@ import { Exam } from '../../models/exam';
 export class SelectDiplomaComponent {
 
   allExam !: Exam[];
+  isNotExam : boolean =false
 
   constructor(private _quizesService:QuizesService ,
     private _activatedRoute : ActivatedRoute 
@@ -32,6 +33,7 @@ export class SelectDiplomaComponent {
         next :(res:any)=>{
           console.log(res)
           this.allExam = res.exams ;
+          this.allExam.length == 0 ? this.isNotExam = true : this.isNotExam = false
           console.log(this.allExam)
 
         },

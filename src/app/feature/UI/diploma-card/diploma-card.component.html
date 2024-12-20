@@ -13,7 +13,9 @@
           
             <div class="">
                 <p>{{Exam.duration}} Minutes</p>
-                <app-main-button [active]="'Start'" />
+                <app-main-button (action)="showExam($event)" [active]="'Start'" />
+
+                <app-popup-exam [examId]="Exam._id" [visible]="visible" />
             </div>
         </div>
 

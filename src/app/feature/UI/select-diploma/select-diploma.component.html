@@ -1,7 +1,11 @@
-<div id="select-diploma" class="">
-    <div class="container">
+<div id="select-diploma" class="font-poppins">
+    <div  class="container" >
         <div class="row" *ngFor="let exam of allExam">
-           <app-diploma-card [Exam]="exam" />
+           <app-diploma-card *ngIf="exam" [Exam]="exam" />
         </div>
+
+        <div *ngIf="isNotExam" class="d-flex justify-content-center align-items-center">
+            <h1 class="primary title-bold">No Exam Avalible</h1>
+       </div>
     </div>
 </div>
