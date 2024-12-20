@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MainButtonComponent } from '../../../core/UI/main-button/main-button.component';
+import { Exam } from '../../models/exam';
 
 @Component({
   selector: 'app-diploma-card',
@@ -13,5 +14,7 @@ import { MainButtonComponent } from '../../../core/UI/main-button/main-button.co
   styleUrl: './diploma-card.component.css'
 })
 export class DiplomaCardComponent {
+
+  @Input() Exam !: Exam ;
 
 }

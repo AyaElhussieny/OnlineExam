@@ -1,5 +1,7 @@
 <div id="select-diploma" class="">
     <div class="container">
-        <app-diploma-card />
+        <div class="row" *ngFor="let exam of allExam">
+           <app-diploma-card [Exam]="exam" />
+        </div>
     </div>
 </div>
