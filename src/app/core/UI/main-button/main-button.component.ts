@@ -11,6 +11,7 @@ import { Component, EventEmitter, Input, Output, output } from '@angular/core';
 export class MainButtonComponent {
 
   @Input() active : string = ''; 
+  @Input() disabled : boolean = false; 
   @Output() action : EventEmitter<any> = new EventEmitter();
 
 

@@ -1,0 +1,19 @@
+::ng-deep
+.p-galleria .p-galleria-indicators .p-galleria-indicator button {
+    border-radius: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin: 0 0.3rem;
+}
+
+::ng-deep
+.p-galleria-item {
+    display: block;
+    padding-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+::ng-deep
+.p-radiobutton .p-radiobutton-box{
+margin-right: 1rem;
+}
