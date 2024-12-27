@@ -11,7 +11,7 @@ export interface Question{
     exam : Exam
 }
  
-  interface Answer {
+  export interface Answer {
     answer : string ,
     key : string
   }

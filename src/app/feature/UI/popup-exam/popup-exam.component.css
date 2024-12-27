@@ -17,3 +17,30 @@
 .p-radiobutton .p-radiobutton-box{
 margin-right: 1rem;
 }
+/* 
+::ng-deep
+.p-galleria .p-galleria-item-nav .p-icon-wrapper .p-icon {
+   background-color: red;
+    position: relative;
+    bottom: -40%; 
+    
+} */
+
+::ng-deep
+.p-galleria .p-galleria-item-nav {
+    background-color: aqua;
+    color: transparent;
+    width: 8rem;
+    height: 3rem;
+    position: absolute;
+    top: 100%;
+
+}
+
+
+.dot{
+    height: 0.5rem;
+    width: 0.5rem;
+    background-color: rgb(201, 199, 199);
+    border-radius: 50%;
+}

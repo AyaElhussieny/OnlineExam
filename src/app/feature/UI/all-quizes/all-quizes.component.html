@@ -4,8 +4,12 @@
         <P class="primary title-bold">View All</P>
     </div>
 
+    <div class="row mx-0 gy-3">
+        <div class="col-md-4" *ngFor="let quize of allQuizes">
+      <app-quize-card [quize]="quize" />
+  </div>
 
-    <p-scroller 
+    <!-- <p-scroller 
     [items]="allQuizes" 
     [itemSize]="size" 
     scrollHeight="400px" 
@@ -18,6 +22,6 @@
                 </div>
             </div>
             </ng-template>
-        </p-scroller>
+        </p-scroller> -->
 
 </div>

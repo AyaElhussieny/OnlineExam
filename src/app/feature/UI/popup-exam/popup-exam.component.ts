@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { QuizesService } from '../../services/Quizes/quizes.service';
-import { Question } from '../../models/question';
+import { Answer, Question } from '../../models/question';
 import { MainButtonComponent } from '../../../core/UI/main-button/main-button.component';
 import { ButtonModule } from 'primeng/button';
 import { GalleriaModule } from 'primeng/galleria';
@@ -36,11 +36,17 @@ export class PopupExamComponent implements OnInit {
   @Input() visible : boolean = false ;
   @Input() examId !: string ;
   allQuestions !: Question [] ;
+  copyAllQuestions !: Question [] ;
+  correctedQuestions : Question [] = [];
+  wrongQuestions : Question [] =[] ;
   isExamOpen : boolean = false;
   numberOfQuestions !: number;
   examDuration !: string;
   display !: any;
-  selectedAnswer : any
+  selectedAnswer !: Answer ;
+  disabledBtnSignal : boolean = true;
+  question !: Question ;
+  viewDialog : boolean = false
 
 
   position: string  | undefined = 'bottom';
@@ -68,7 +74,45 @@ export class PopupExamComponent implements OnInit {
   constructor(private _quizesService:QuizesService){}
   ngOnInit(): void {
     console.log( this.visible , this.examId)
-    if (this.visible == true) this.getQuestions(this.examId)   }
+    if (this.visible == true) this.getQuestions(this.examId) 
+
+   
+    }
+
+  selectAnswerOnQuestion(correctAnswer : Question){
+
+      if(correctAnswer.correct == this.selectedAnswer.key){
+        console.log(correctAnswer.correct , this.selectedAnswer.key ,true)
+        this.correctedQuestions.push(correctAnswer)
+      }
+      else{
+        console.log(correctAnswer.correct , this.selectedAnswer.key ,false)
+        this.wrongQuestions.push(correctAnswer)
+      }
+
+      this.viewQuestion(this.copyAllQuestions)
+
+
+      
+    }
+
+
+
+  answerQuestion(){
+    if(this.selectedAnswer?.key) this.disabledBtnSignal = false ;  
+
+    }
+
+
+  viewQuestion(questions : Question[]){
+      console.log(this.copyAllQuestions)
+      this.copyAllQuestions.shift()
+      if(this.copyAllQuestions.length > 0){
+      this.question = questions[0];
+      }else{
+      this.viewDialog = true
+      }
+    }
 
   getQuestions(id :any){
     this._quizesService.getAllQuestionsOnExam(id).subscribe({
@@ -76,14 +120,21 @@ export class PopupExamComponent implements OnInit {
         console.log(res)
         this.allQuestions = res.questions ;
         this.numberOfQuestions = this.allQuestions.length ;
-        this.examDuration = this.allQuestions[0].exam.duration
+        this.copyAllQuestions = Array.from(this.allQuestions)
+        this.question = this.copyAllQuestions[0]
+        this.examDuration = this.allQuestions[0]?.exam.duration
         console.log(this.numberOfQuestions,this.examDuration, this.allQuestions)
-
+        //this.nextQuestion()
       },
       error :(err:any)=>{
         console.log(err)
       }
     })
+  }
+
+
+  closeExam(){
+    this.isExamOpen = false;
   }
 
   openExam(){

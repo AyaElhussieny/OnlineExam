@@ -1,0 +1,16 @@
+<div id="question">
+    <div class="d-flex flex-column gap-3">
+        <div *ngFor="let answer of question.answers " class="field-checkbox">
+            <p-radioButton 
+            [inputId]="answer.key"
+                name="answer" 
+                [value]="answer" 
+                [(ngModel)]="selectedAnswer" 
+                (onClick)="selectAnswerOnQuestion(question)"
+                />
+            <label [for]="answer.key" class="ml-2">
+                {{ answer.answer }}
+            </label>
+        </div>
+    </div>
+</div>

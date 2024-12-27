@@ -30,7 +30,9 @@
                         </svg>
                         
                 </span>
-
+               
+                <div *ngIf="!viewDialog">
+                    
                 <div class="d-flex justify-content-between align-items-center">
                     <p class="primary mb-0">Question 1 of {{numberOfQuestions}}</p>
                     <div class="alarm d-flex align-items-center">
@@ -39,37 +41,51 @@
                     </div>
                  </div>
 
+                 <div  class="d-flex justify-content-around align-items-center ">
+                    <div *ngFor="let i of allQuestions">
+                        <div class="dot my-3"></div>
+                    </div>
+                 </div>
+                 <div>
+                    <div class="d-flex flex-column gap-3 my-3">
+                        <h4 class="main text-center">{{question.question}}</h4>
 
-                <p-galleria 
-                    [value]="allQuestions" 
-                    [indicatorsPosition]="'top'" 
-                    [showIndicators]="true" 
-                    [showThumbnails]="false" 
-                    [showIndicatorsOnItem]="showIndicatorsOnItem" 
-                    [responsiveOptions]="responsiveOptions" 
-                    [containerStyle]="{'width': '100%'}"
-                    aria-disabled="false">
-                        <ng-template pTemplate="item" let-item>
-                            <!-- <img width="100%" src="../../../../assets/images/logo.svg" style="width: 100%; display: block;" /> -->
-                                <h5 class="primary">{{item.question}}</h5>
-                                <div class="d-flex flex-column gap-3">
-                                    <div *ngFor="let answer of item.answers" class="field-checkbox">
-                                        <p-radioButton 
-                                        [inputId]="answer.key"
-                                            name="answer" 
-                                            [value]="answer.key" 
-                                            [(ngModel)]="selectedAnswer" />
-                                        <label [for]="answer.key" class="ml-2">
-                                            {{ answer.answer }}
-                                        </label>
-                                    </div>
-                                </div>
-                        </ng-template>
-                </p-galleria>
-               
+                        <div *ngFor="let answer of question.answers " class="field-checkbox">
+                            <p-radioButton 
+                            [inputId]="answer.key"
+                                name="answer" 
+                                [value]="answer" 
+                                [(ngModel)]="selectedAnswer" 
+                                 (onClick)="answerQuestion()" />
+                            <label [for]="answer.key" class="ml-2">
+                                {{ answer.answer }}
+                            </label>
+                        </div>
+                    </div>
+                 </div>
+
                 <div class="d-flex justify-content-between align-items-center ">
                     <app-main-button class="w-100 me-1" [active]="'Back'" />
-                    <app-main-button [disabled]="true" class="w-100 ms-1" [active]="'Next'" />
+                    <app-main-button  id="next" [disabled]="disabledBtnSignal" (action)="selectAnswerOnQuestion(question)"  class="w-100 ms-1" [active]="'Next'" />
+                </div>
+                </div>
+
+
+                <div *ngIf="viewDialog">
+
+                    <h4 class="title-bold">Your Score</h4>
+
+                    <div class="d-flex justify-content-center align-items-center">
+
+                        <div class="result mb-5">
+                            <h5><span class="title-bold primary mb-3">Correct Result</span> {{correctedQuestions.length}}</h5>
+                            <h5 class="text-danger mb-5"><span class="title-bold">Incorrect Result</span> {{wrongQuestions.length}}</h5>
+
+                            <app-main-button [active]="'View Result'" (action)="closeExam()"></app-main-button>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </ng-template>
